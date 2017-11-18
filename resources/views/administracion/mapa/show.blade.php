@@ -47,7 +47,6 @@
  					<thead style="background-color:#A9D0F5">
  						<th>Id</th>
  						<th>Descripcion</th>
- 						<th>Estado incidente</th>
  						<th>Usuario ID</th>
  						
  						<th>Longitud</th>
@@ -60,8 +59,8 @@
  						<tr>
  							<td>{{$det->id}}</td>
  							<td>{{$det->description}}</td>
+ 							
  							<td>{{$det->name}}</td>
- 							<td>{{$det->user_id}}</td>
  							
  							<td>{{$det->long_location}}</td>
  							<td>{{$det->lat_location}}</td>

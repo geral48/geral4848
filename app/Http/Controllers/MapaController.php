@@ -18,21 +18,30 @@ use DB;
 class MapaController extends Controller
 {
 
-	public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
 
     public function index(Request $request)
     {
-    	if($request){
-    		$query=trim($request->get('searchText'));
-    		$incidentes=DB::table('incident')->where('description','LIKE','%'.$query.'%')
-    		->orderBy('id','desc')
-    		->paginate(7);
-    		return view('administracion.mapa.index',["incidentes"=>$incidentes,"searchText"=>$query]);
-    		/*select('id','name','apellidoPer','dniPer','emailPer','imagenPer')->*/
-    	}
+        if($request){
+            $query=trim($request->get('searchText'));
+            /*$incidentes=DB::table('incident')->where('description','LIKE','%'.$query.'%')
+            ->orderBy('id','desc')
+            ->paginate(5);*/
+
+            $incidentes=DB::table('incident as i')
+            ->join('incident_status as ic','ic.id','=','i.incident_status')
+            
+            ->select('i.id','i.description','ic.name','i.long_location','i.lat_location','i.imagen')
+            ->orderBy('i.id','desc')
+            ->paginate(4);
+
+
+            return view('administracion.mapa.index',["incidentes"=>$incidentes,"searchText"=>$query]);
+            /*select('id','name','apellidoPer','dniPer','emailPer','imagenPer')->*/
+        }
     }
 
     public function show($id)
@@ -45,14 +54,15 @@ class MapaController extends Controller
 
                 $detalles=DB::table('incident as i')
                 ->join('incident_status as ic','ic.id','=','i.incident_status')
-                ->select('i.id','i.description','ic.name','i.user_id','i.long_location','i.lat_location','i.imagen')
+                ->join('users as u','u.id','=','i.user_id')
+                ->select('i.id','i.description','ic.name','u.name','i.long_location','i.lat_location','i.imagen')
                 ->where('i.id','=',$id)
-                ->groupBy('i.id','i.description','ic.name','i.user_id','i.long_location','i.lat_location','i.imagen')
+                ->groupBy('i.id','i.description','ic.name','u.name','i.long_location','i.lat_location','i.imagen')
                 ->get();
 
                 return view("administracion.mapa.show",["incidentes"=>$incidentes,"detalles"=>$detalles]);
     }
-	/*public function maps(){
-    	return view('ver_mapa');
+    /*public function maps(){
+        return view('ver_mapa');
     }*/
 }

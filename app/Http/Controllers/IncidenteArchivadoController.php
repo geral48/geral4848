@@ -14,27 +14,28 @@ use DB;
 class IncidenteArchivadoController extends Controller
 {
     public function __construct(){
-    	$this->middleware('auth');
+        $this->middleware('auth');
     }
 
 
     public function index(Request $request)
     {
-    	if($request){
-    		$query=trim($request->get('searchText'));
-    		$incidentes=DB::table('incident as i')
+        if($request){
+            $query=trim($request->get('searchText'));
+            $incidentes=DB::table('incident as i')
             ->join('incident_status as ic','ic.id','=','i.incident_status')
             ->join('calification as ca','i.id','=','ca.idincident')
-            ->select('i.id','i.description','ic.name','i.user_id','ca.calificationA','ca.calificationB','ca.calificationC','i.long_location','i.lat_location','i.imagen')
+            ->join('users as u','u.id','=','i.user_id')
+            ->select('i.id','i.description','ic.name','u.name','ca.calificationA','ca.calificationB','ca.calificationC','i.long_location','i.lat_location','i.imagen')
             ->where('i.description','LIKE','%'.$query.'%')
             ->where('i.incident_status','=','1')
-    		->orderBy('i.id','desc')
-    		->paginate(7);
-    		return view('administracion.archivados.index',["incidentes"=>$incidentes,"searchText"=>$query]);
-    	}
+            ->orderBy('i.id','desc')
+            ->paginate(7);
+            return view('administracion.archivados.index',["incidentes"=>$incidentes,"searchText"=>$query]);
+        }
     }
-	public function destroy($id){
-		$incidente=DB::table('incident')->where('id','=',$id)->delete();
+    public function destroy($id){
+        $incidente=DB::table('incident')->where('id','=',$id)->delete();
         return Redirect::to('administracion/archivados');
-	}
+    }
 }

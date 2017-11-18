@@ -2,7 +2,7 @@
 
 @section ('contenido')
 
-	
+  
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <div class="table-responsive" >
@@ -48,7 +48,9 @@
     <div class="panel panel-default" style="background-color:black;">
         <div class="panel-body" >
             <strong><h4 style="color:white;">Sistema de VIASlibres</h4></strong>
-          <p style="text-align:left; background-color:black; color:white; font-family:calibri;">El sistema encargado de velar por el optimo desarrollo de deteccion deincidentes en carreteras , a fin de que el usuario pueda reportar uno y se pueda tomar las medidas correctivas correctas ante este incidente.</p>
+          <p style="text-align:left; background-color:black; color:white; font-family:calibri;">
+          El sistema administrable de Vias libres tiene como objetivo administrar todos los incidentes registrados por los usuarios, a partir de esto podemos archivar o mantener en la lista dependiendo de la calificacion del publico en general por su nivel de confianza o importancia. El sistema ademas permite ubicar el incidente en el mapa y ver en el detalle la foto tomada desde el movil en el lugar de los hechos.
+          Tambien podemos administrar los usuarios del sistema.</p>
         </div>
       </div>
       
@@ -60,5 +62,5 @@
 </div>
 </div>
 
-	
+  
 @stop

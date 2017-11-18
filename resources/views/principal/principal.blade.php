@@ -77,9 +77,9 @@
                   
                   <!-- Menu Footer-->
                   <li class="user-footer">
-                    <div class="pull-left">
+                    <!--<div class="pull-left">
                       <a href="#" class="btn btn-default btn-flat">Perfil</a>
-                    </div>
+                    </div>-->
                     <div class="pull-right">
                       <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">Salir</a>
@@ -150,10 +150,10 @@
 
             <!--<li><a href="#"><i class="fa fa-book"></i> Documentacion</a></li>-->
 
-            <li class="header">CLASIFICACIÓN</li>
+            <!--<li class="header">CLASIFICACIÓN</li>
             <li><a href="#"><i class="fa fa-circle-o text-danger"></i> Importantes </a></li>
             <li><a href="#"><i class="fa fa-circle-o text-warning"></i> Peligrosos </a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-info"></i> Información </a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-info"></i> Información </a></li>-->
           </ul>
         </section>
         <!-- /.sidebar -->

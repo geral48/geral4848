@@ -41,17 +41,24 @@
                   <div>
                         <thead class="info">
                         <th>Id</th>
-                        <th>Longitud</th>
-                        <th>Latitud</th>
+                        <th>Descripcion</th>
+                        <th>Estado</th>
+                        <!--<th>Longitud</th>-->
+                        <!--<th>Latitud</th>-->
                         <th>Opcion</th>
                         </thead>
                         @foreach ($incidentes as $inc)
+
+                        
                         <tr class="info">
                         <td>{{$inc ->id}}</td>
-                        <td>{{$inc ->long_location}}</td>
-                        <td>{{$inc ->lat_location}}</td>
+                        <td >{{$inc ->description}}</td>
+                        <td >{{$inc ->name}}</td>
+                        <!--<td>{{$inc ->long_location}}</td>-->
+                        <!--<td>{{$inc ->lat_location}}</td>-->
                         <td>
                               <button class="btn btn-success" onclick="myfunction({{$inc ->long_location}},{{$inc ->lat_location}},{{$inc ->id}});">Ver mapa</button>
+
                         </td>
                         </tr>
                         @endforeach
@@ -171,7 +178,7 @@
                               }
                   }*/
 
-
+                   
                   
 
             </script>
