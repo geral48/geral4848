@@ -18,6 +18,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \ViasLibres\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \ViasLibres\Http\Middleware\Cors::class,
     ];
 
     /**
@@ -55,7 +56,6 @@ class Kernel extends HttpKernel
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \ViasLibres\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'cors' => \ViasLibres\Http\Middleware\Cors::class
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class
     ];
 }
