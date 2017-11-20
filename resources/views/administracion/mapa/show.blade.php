@@ -67,7 +67,7 @@
  							<td>
  								<img src="{{asset('../imagenes/extras/'.$det->imagen)}}" alt="{{ $det->imagen}}" height="100px" width="100px" class="img-thumbnail" >
 
- 							</td>
+ 							</td><!--../imagenes/extras/-->
  						</tr>
  						@endforeach
  						<div >

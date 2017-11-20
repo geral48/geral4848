@@ -33,3 +33,11 @@ Route::resource('administracion/incidentes','IncidenteController');
 Route::resource('administracion/mapa','MapaController');
 Route::resource('administracion/archivados','IncidenteArchivadoController');
 
+Route::get('images/{image}', function($image = null)
+{
+    $path = storage_path().'/app/' . $image;
+    if (file_exists($path)) { 
+        return Response::download($path);
+    }
+});
+

@@ -25,9 +25,9 @@ class IncidenteController extends Controller
             $query=trim($request->get('searchText'));
             $incidentes=DB::table('incident as i')
             ->join('incident_status as ic','ic.id','=','i.incident_status')
-            ->join('calification as ca','i.id','=','ca.idincident')
+            //->join('calification as ca','i.id','=','ca.idincident')
             ->join('users as u','u.id','=','i.user_id')
-            ->select('i.id','i.description','ic.name','u.name','ca.calificationA','ca.calificationB','ca.calificationC','i.long_location','i.lat_location','i.imagen')
+            ->select('i.id','i.description','ic.name','u.name','i.calificationA','i.calificationB','i.calificationC','i.long_location','i.lat_location','i.imagen')
             ->where('i.description','LIKE','%'.$query.'%')
             ->where('i.incident_status','=','2')//Aqui poner en el listado archivados a 1
             ->orderBy('i.id','desc')
