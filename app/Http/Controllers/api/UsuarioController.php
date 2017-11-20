@@ -37,4 +37,14 @@ class UsuarioController extends Controller
     		return response()->json(['status'=>'error , usuario no existe'],404);
     	}
     }
+
+    public function getUser($id) {
+        $usuario=User::find($id);
+        if ($usuario) {
+            return response()->json(['status'=>'ok', 'data' => $usuario],200);
+        }else{
+            return response()->json(['status'=>'error , usuario no existe'],404);
+        }
+    }
+
 }

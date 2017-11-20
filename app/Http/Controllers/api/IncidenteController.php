@@ -11,11 +11,20 @@ class IncidenteController extends Controller
 {
 
 	public function create(Request $request){
+
+
+
     	if (Incidente::create($request->all())) {
 		return response()->json(['status'=>'ok'],200);
 		}else{
 		return response()->json(['status'=>'error'],404);
 		}
+    }
+
+    public function uploadImage(Request $request) {
+        $nameFile = 'incidente_'.rand(100, 999).'.jpeg';
+        $path = $request->image->storeAs('', $nameFile);
+        return response()->json(['status'=>'ok', 'data' => $path],200);
     }
 
     public function delete($id){
