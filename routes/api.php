@@ -26,11 +26,14 @@ Route::get('/incidentes', function(){
 });
 
 //Crear
-Route::post('/incidentes','api\IncidenteController@create');
+Route::post('/incidentes','api\IncidenteController@create_incidente');
 //Borrar
 Route::get('/incidentes/{id}','api\IncidenteController@delete');
 //Editar
 Route::post('/incidentes/{id}/edit','api\IncidenteController@edit');
+//Crear calificacion
+Route::post('/calificaciones/{id}/{seleccion}/create_calification','api\IncidenteController@create_calification');
+
 
 //API USUARIO
 Route::get('/usuarios', function(){
@@ -49,12 +52,8 @@ Route::get('/calificaciones', function(){
 	return calificacion::all();
 });
 
-//Crear
-Route::post('/calificaciones','api\calificationController@create');
-//Borrar
-Route::get('/calificaciones/{id}','api\calificationController@delete');
-//Editar
-Route::post('/calificaciones/{id}/edit','api\calificationController@edit');
+
+
 
 //Prueba para llenar calificaciones si existe id , agregar +1 a cualquier calificacion solo una vez y guardar calificacion.
 
