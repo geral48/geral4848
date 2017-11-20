@@ -2,6 +2,7 @@
 
 namespace ViasLibres\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use ViasLibres\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 

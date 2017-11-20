@@ -39,6 +39,7 @@ class IncidenteController extends Controller
         'calificationB' => 0,
         'calificationC' => 0,
     ]);
+
     return response()->json(['status' => 'ok']);
     }
 
@@ -64,6 +65,11 @@ class IncidenteController extends Controller
         }
     }
 
+    public function uploadImage(Request $request) {
+        $nameFile = 'incidente_'.rand(100, 999).'.jpeg';
+        $path = $request->image->storeAs('', $nameFile);
+        return response()->json(['status'=>'ok', 'data' => $path],200);
+    }
 
     public function delete($id){
     	$incidente=Incidente::find($id);

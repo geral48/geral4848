@@ -20,6 +20,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Login
+Route::get('/token', 'api\LoginApiController@getToken');
+Route::get('/logout', 'api\LoginApiController@logout');
+Route::post('/login', 'api\LoginApiController@login');
+
 //API INCIDENTE
 Route::get('/incidentes', function(){
 	return Incidente::all();
@@ -33,7 +38,8 @@ Route::get('/incidentes/{id}','api\IncidenteController@delete');
 Route::post('/incidentes/{id}/edit','api\IncidenteController@edit');
 //Crear calificacion
 Route::post('/calificaciones/{id}/{seleccion}/create_calification','api\IncidenteController@create_calification');
-
+//UploadImage
+Route::post('/incidentes/imageupload','api\IncidenteController@uploadImage');
 
 //API USUARIO
 Route::get('/usuarios', function(){
@@ -43,7 +49,9 @@ Route::get('/usuarios', function(){
 //Crear
 Route::post('/usuarios','api\UsuarioController@create');
 //Borrar
-Route::get('/usuarios/{id}','api\UsuarioController@delete');
+Route::delete('/usuarios/{id}','api\UsuarioController@delete');
+//Ver
+Route::get('/usuarios/{id}','api\UsuarioController@getUser');
 //Editar
 Route::post('/usuarios/{id}/edit','api\UsuarioController@edit');
 
